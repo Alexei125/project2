@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import ForeignKey
 
 
 class Category(models.Model):
@@ -46,11 +47,12 @@ class Product(models.Model):
         verbose_name="Цена за покупку",
     )
     created_at = models.DateField(
-        verbose_name="Дата создания",
+        verbose_name="Дата создания (БД)",
     )
     update_at = models.DateField(
         verbose_name="Дата последнего изменения",
     )
+
 
 
 class Meta:
