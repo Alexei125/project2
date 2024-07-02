@@ -11,12 +11,11 @@ class Category(models.Model):
         verbose_name="Описание",
     )
 
+    class Meta:
+        verbose_name = "Наименование"
 
-class Meta:
-    verbose_name = "Наименование"
-
-    def __str__(self):
-        return self.name
+        def __str__(self):
+            return self.name
 
 
 class Product(models.Model):
@@ -52,9 +51,8 @@ class Product(models.Model):
         verbose_name="Дата последнего изменения",
     )
 
+    class Meta:
+        verbose_name = ("Наименование",)
 
-class Meta:
-    verbose_name = ("Наименование",)
-
-    def __str__(self):
-        return self.name
+        def __str__(self):
+            return self.name
