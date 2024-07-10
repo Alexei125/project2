@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import ForeignKey
 
 
 class Category(models.Model):
@@ -52,7 +51,7 @@ class Product(models.Model):
     )
 
     class Meta:
-        verbose_name = ("Наименование",)
+        verbose_name = "Наименование"
 
         def __str__(self):
             return self.name
