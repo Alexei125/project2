@@ -1,11 +1,11 @@
 from django.shortcuts import render
 
-from catalog.models import Product
+from catalog.models import Category
 
 
 def base(request):
-    products_list = Product.objects.all()
+    product_list = Category.objects.all()
     context = {
-        'object_list': products_list
+        'object_list': product_list
     }
-    return render(request, "catalog/base.html", context)
+    return render(request, "catalog/category.html", context)
