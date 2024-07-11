@@ -6,5 +6,5 @@ from catalog.views import base
 app_name = CatalogConfig.name
 
 urlpatterns = [
-    path('', base),
+    path('', base, name='base'),
 ]
