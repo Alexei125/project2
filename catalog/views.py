@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from catalog.models import Category
+from catalog.models import Category, Product
 
 
 def base(request):
@@ -9,3 +9,9 @@ def base(request):
         'object_list': product_list
     }
     return render(request, "catalog/category.html", context)
+
+
+def products(request, pk):
+    product = get_objects_or_404(Product, pk=pk)
+    context = {'product': product}
+    return (request, "catalog/product.html", context)
