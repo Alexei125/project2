@@ -9,3 +9,4 @@ urlpatterns = [
     path('', base, name='base'),
     path('catalog/<int:pk>/', products, name='products')
 ]
+
