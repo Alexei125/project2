@@ -183,7 +183,7 @@
 
 
 <header data-bs-theme="dark">
-    {% include 'includes/inc_menu.html' %}
+    {% include 'items/includes/inc_menu.html' %}
 </header>
 
 <main>
@@ -191,11 +191,11 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Маркет</h1>
-                <p class="lead text-body-secondary">Электроника</p>
+                <h1 class="fw-light">Блог</h1>
+                <p class="lead text-body-secondary">Напиши свои пожелания</p>
                 <p>
-                    <a class="btn btn-primary my-2" href="#">Main call to action</a>
-                    <a class="btn btn-secondary my-2" href="#">Secondary action</a>
+                    <a class="btn btn-primary my-2" href="{% url 'blog:blogpost_form' %}"
+                       role="button">Оставь отзыв</a>
                 </p>
             </div>
         </div>
