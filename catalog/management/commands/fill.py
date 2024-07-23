@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     @staticmethod
     def json_read_products():
-        with open('catalog.json', encoding='utf-8') as file:
+        with open("catalog.json", encoding="utf-8") as file:
             return json.load(file)
 
     def handle(self, *args, **options):
@@ -19,9 +19,7 @@ class Command(BaseCommand):
         # Обходим все значения категорий из фиктсуры для получения информации об одном объекте
         for product in Command.json_read_products():
             products_for_create.append(
-                Product(name=product['name'],
-                        description=product['description']
-                        )
+                Product(name=product["name"], description=product["description"])
             )
 
         # Создаем объекты в базе с помощью метода bulk_create()

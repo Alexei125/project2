@@ -1,17 +1,18 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
 from catalog.models import Product
 
 
-def base(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list
-    }
-    return render(request, "catalog/category.html", context)
+class ProductListView(ListView):
+    model = Product
+    template_name = "catalog/category/html"
 
 
-def products(request, pk):
-    product = get_objects_or_404(Product, pk=pk)
-    context = {'product': product}
-    return (request, "catalog/product.html", context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = "catalog/product_list.html"
+
+# def products(request, pk):
+# product = get_objects_or_404(Product, pk=pk)
+# context = {'product': product}
+# return (request, "catalog/product_list.html", context)
