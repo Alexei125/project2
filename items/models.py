@@ -1,5 +1,7 @@
 from django.db import models
 
+from catalog.models import Product
+
 
 class Item(models.Model):
     title = models.CharField(
@@ -20,3 +22,17 @@ class Item(models.Model):
     class Meta:
         verbose_name = "Статья"
         verbose_name_plural = "Статьи"
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Продукт")
+    number_version = models.PositiveIntegerField(verbose_name="Номер версии")
+    name_version = models.CharField(max_length=100, verbose_name="Название версии")
+    current_version = models.BooleanField(default=False, verbose_name="Текущая версия")
+
+    class Meta:
+        verbose_name = "Версия продукта"
+        verbose_name_plural = "Версии продуктов"
+
+    def __str__(self):
+        return f"{self.product.name} - {self.number_version} {self.name_version}"
