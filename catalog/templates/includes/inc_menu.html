@@ -10,8 +10,12 @@
                 <h4>Навигация</h4>
                 <ul class="list-unstyled">
                     <li><a class="text-white" href="#">Главная</a></li>
-                    <li><a class="text-white" href="#">Вход</a></li>
-                    <li><a class="text-white" href="#">Регистрация</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="text-white" href="{% url 'users:logout' %}">Выход</a></li>
+                    {% else %}
+                    <li><a class="text-white" href="{% url 'users:login' %}">Вход</a></li>
+                    <li><a class="text-white" href="{% url 'users:register' %}">Регистрация</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
