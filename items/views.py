@@ -1,6 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy, reverse
-from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product
@@ -27,16 +27,17 @@ class ItemDetailView(DetailView):
         return self.object
 
 
-class ItemCreateView(CreateView):
+class ItemCreateView(CreateView, LoginRequiredMixin):
     model = Item
     form_class = ProductForm
     success_url = reverse_lazy('blog:blogpost_list')
 
     def form_valid(self, form):
-        if form.is_valid():
-            new_blog = form.save()
-            new_blog.slug = slugify(new_blog.title)
-            new_blog.save()
+        product = form.save()
+        user = self.request.user
+        product.author = user
+        product.save()
+
         return super().form_valid(form)
 
 
