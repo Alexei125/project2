@@ -1,20 +1,19 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView
 
 from catalog.models import Product
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = "catalog/category/html"
+    login_url = "/login/"
+    redirect_field_name = "redirect_to"
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = "catalog/product_list.html"
-
-
-class MyView(LoginRequiredMixin, View):
     login_url = "/login/"
     redirect_field_name = "redirect_to"
 
