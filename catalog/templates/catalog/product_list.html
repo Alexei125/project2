@@ -6,24 +6,31 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
-                    <img card-body src="{{ product.photo | media_filter  }}>
+                    <img card-body src="{{ product.photo | media_filter  }}">
                     <div class="">
                     <p class="card-text">{{ object.name}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
+                            {% if perms.product_can_delete_product and
+                            perms.product_can_change_category and
+                            perms.product_can_description_product
+                            %}
                             <button class="btn btn-sm btn-outline-secondary" type="button">
-                                View
+                                Редактировать
+                            </button>
+                            {% endif %}
+                            <button class="btn btn-sm btn-outline-secondary" type="button">
+                                Удалить
                             </button>
                             <button class="btn btn-sm btn-outline-secondary" type="button">
-                                Edit
+                                Просмотр
                             </button>
                         </div>
-                        <small class="text-body-secondary">9 mins</small>
+                        <small class="text-body-secondary"></small>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
