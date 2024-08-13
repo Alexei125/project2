@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.views.generic import ListView, DetailView
 
 from catalog.models import Product
@@ -24,3 +25,11 @@ def form_valid(self, form):
     product.owner = user
     user.save()
     return super().form_valid(form)
+
+
+def get_form_class(self):
+    user = self.request.user
+    if (user.has_perm("can_delite_product") and user.has_perm("can_change_category") and
+            user.has_perm("can_description_product")):
+        return ProductModeratorForm
+    raise PermissionDenied
