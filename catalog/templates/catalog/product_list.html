@@ -11,7 +11,8 @@
                     <p class="card-text">{{ object.name}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            {% if perms.product_can_delete_product and
+                            {% if
+                            perms.product_can_delete_product and
                             perms.product_can_change_category and
                             perms.product_can_description_product
                             %}
@@ -31,6 +32,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 {% endblock %}

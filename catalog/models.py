@@ -41,8 +41,10 @@ class Product(models.Model):
         verbose_name="Фото",
     )
     category = models.CharField(
+        max_length=50,
         verbose_name="Категория",
     )
+
     price = models.IntegerField(
         verbose_name="Цена за покупку",
     )
