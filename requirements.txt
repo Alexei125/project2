@@ -1,5 +1,6 @@
-Django
+Django~=4.2.2
 psycopg2-binary
 pillow
 ipython
 redis
+python-dotenv~=1.0.1
